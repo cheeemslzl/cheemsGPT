@@ -86,27 +86,34 @@ $(document).ready(function() {
     // 解绑键盘事件
     chatInput.off("keydown",handleEnter);
     
-    // 保存api key与对话数据
-    var data = {
-      "apiKey" : "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", // 这里填写固定 apiKey
-    }
+    var openai_key = './openai_key.json'
+        with open(openai_key_file, 'r', encoding='utf-8') as f:
+        openai_key = json.loads(f.read())
+    return openai_key['api']
+    
+    
+    
+//     // 保存api key与对话数据
+//     var data = {
+//       "apiKey" : "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", // 这里填写固定 apiKey
+//     }
    
-    // 判断是否使用自己的api key
-    if ($(".key .ipt-1").prop("checked")){
-      var apiKey = $(".key .ipt-2").val();
-      if (apiKey.length < 20 ){
-          common_ops.alert("请输入正确的 api key ！",function(){
-            chatInput.val('');
-            // 重新绑定键盘事件
-            chatInput.on("keydown",handleEnter);
-          })
-          return
-      }else{
-        data.apiKey = data
-      }
+//     // 判断是否使用自己的api key
+//     if ($(".key .ipt-1").prop("checked")){
+//       var apiKey = $(".key .ipt-2").val();
+//       if (apiKey.length < 20 ){
+//           common_ops.alert("请输入正确的 api key ！",function(){
+//             chatInput.val('');
+//             // 重新绑定键盘事件
+//             chatInput.on("keydown",handleEnter);
+//           })
+//           return
+//       }else{
+//         data.apiKey = apiKey
+//       }
 
-    }
-
+//     }
+    
     var message = chatInput.val();
     if (message.length == 0){
       common_ops.alert("请输入内容！",function(){
@@ -136,7 +143,7 @@ $(document).ready(function() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + data.apiKey
+        'Authorization': 'Bearer ' + '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'
       },
       data: JSON.stringify({
         "messages": data.prompt,
