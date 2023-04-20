@@ -102,7 +102,7 @@ $(document).ready(function() {
           })
           return
       }else{
-        data.apiKey = apiKey
+        data.apiKey = data
       }
 
     }
