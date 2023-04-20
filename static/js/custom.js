@@ -136,7 +136,7 @@ $(document).ready(function() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + data.apiKey
+        'Authorization': 'Bearer ' + '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' //data.apiKey
       },
       data: JSON.stringify({
         "messages": data.prompt,
