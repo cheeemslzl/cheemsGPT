@@ -61,7 +61,7 @@ $(document).ready(function() {
     $(".answer .tips").css({"display":"none"});    // 打赏卡隐藏
     chatInput.val('');
     var escapedMessage;
-    if (imgName == "avatar.png"){
+    if (imgName == "cheems.jpg"){
       escapedMessage= escapeHtml(message);  // 对请求message进行转义，防止输入的是html被浏览器渲染
     }else if(imgName == "chatgpt.png"){
       escapedMessage= marked(message);  // 使用marked.js对响应message的markdown格式转换为html
@@ -88,7 +88,7 @@ $(document).ready(function() {
     
     // 保存api key与对话数据
     var data = {
-      "apiKey" : "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", // 这里填写固定 apiKey
+      "apiKey" : "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", // 这里填写固定 apiKey
     }
    
     // 判断是否使用自己的api key
@@ -120,7 +120,7 @@ $(document).ready(function() {
     }
 
 
-    addMessage(message,"avatar.png");
+    addMessage(message,"cheems.jpg");
 
     // 将用户消息保存到数组
     messages.push({"role": "user", "content": message})
@@ -136,7 +136,7 @@ $(document).ready(function() {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + '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' //data.apiKey
+        'Authorization': 'Bearer ' + data.apiKey //data.apiKey
       },
       data: JSON.stringify({
         "messages": data.prompt,
